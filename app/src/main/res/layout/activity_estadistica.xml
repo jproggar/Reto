@@ -117,8 +117,7 @@
                 android:background="#FFFFFF"
                 android:hint="Valor"
                 android:inputType="text"
-                android:visibility="visible"
-                />
+                android:visibility="visible" />
             <Button
                 android:id="@+id/btEnviar"
                 android:layout_width="wrap_content"
@@ -219,8 +218,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="55dp"
                 android:layout_marginTop="20dp"
-                android:background="#FFFFFF"
-                />
+                android:background="#FFFFFF" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -241,8 +239,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="55dp"
                 android:layout_marginTop="20dp"
-                android:background="#FFFFFF"
-                />
+                android:background="#FFFFFF" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

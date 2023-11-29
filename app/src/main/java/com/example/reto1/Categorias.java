@@ -4,38 +4,52 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
+import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Categorias extends AppCompatActivity {
 
+    Button vidrio, plastico, papel;
+    ImageView regresa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categorias);
 
-    }
-    public void gotoPrincipal(View view){
-        Intent intent=new Intent(Categorias.this,Principal.class);
-        startActivity(intent);
-    }
-    public void gotoReciclaVidrio(View view){
-        Intent intent=new Intent(Categorias.this,Estadistica.class);
-        intent.putExtra("mensaje", "Vidrio");
-        startActivity(intent);
-    }
-    public void gotoReciclaPlastico(View view){
-        Intent intent=new Intent(Categorias.this,Estadistica.class);
-        intent.putExtra("mensaje", "Plastico");
-        startActivity(intent);
-    }
-    public void gotoReciclaPapel(View view){
-        Intent intent=new Intent(Categorias.this,Estadistica.class);
-        intent.putExtra("mensaje", "Papel");
-        startActivity(intent);
-    }
+        Intent receive= getIntent();
+        String idUser= receive.getStringExtra("idUser");
 
+        vidrio = findViewById(R.id.btVidrio);
+        papel = findViewById(R.id.btPapel);
+        regresa = findViewById(R.id.ivRegresaCat);
+
+        regresa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getApplicationContext(), Principal.class);
+                intent.putExtra("idUser",idUser);
+                startActivity(intent);
+            }
+        });
+        papel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getApplicationContext(), Papel.class);
+                intent.putExtra("idUser",idUser);
+                startActivity(intent);
+            }
+        });
+        vidrio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getApplicationContext(), Vidrio.class);
+                intent.putExtra("idUser",idUser);
+                startActivity(intent);
+            }
+        });
+    }
 }

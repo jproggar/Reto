@@ -25,7 +25,6 @@
         android:textSize="50sp"
         android:textStyle="bold"
         android:textColor="#3F51B5"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -45,9 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:ems="10"
-            android:hint="email"
-            android:inputType="textEmailAddress"
-            android:onClick="registrar" />
+            android:hint="Nombre - email - celular"
+            android:inputType="text" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -71,13 +69,12 @@
             android:layout_margin="20dp"
             android:backgroundTint="#3647C7"
             android:text="Ingresar"
-            android:onClick="gotoPrincipal"
             android:textSize="30dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Olvidaste la contraseña"
+            android:text="No tienes un Usuario"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -90,7 +87,6 @@
             android:textSize="20sp"
             android:background="#00FAFAFB"
             android:text="Registrate"
-            android:onClick="gotoRegistro"
             android:textColor="#7C0E34"/>
     </LinearLayout>
 </LinearLayout>

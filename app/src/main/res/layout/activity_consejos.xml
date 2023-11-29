@@ -22,7 +22,7 @@
             android:textColor="@color/white"
             android:textSize="40sp" />
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/ivRegresaCon"
             android:layout_width="70dp"
             android:layout_height="80dp"
             android:background="#3647C7"
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:text="Vidrio"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="15dp" />
             <ImageButton
                 android:id="@+id/ibvidrio1"
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:text="Papel"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="15dp" />
             <ImageButton
                 android:id="@+id/btPapel1"
@@ -146,7 +146,7 @@
             android:layout_width="300dp"
             android:layout_height="250dp"
             android:background="@color/white"
-            android:text="Consejos para reducir el consumo de agua /n
+            android:text="Consejos para reducir el consumo de agua
                 Utilizar botellas libres de BPA que son prácticamente irrompibles, son la alternativa a las botellas de un solo uso
                 Reserva un sitio especifico y comodo en casa para el reciclaje
                 Separa bien los envases. A veces, parte de un mismo envase va a diversos contenedores. No se te olvide aplánarlos
