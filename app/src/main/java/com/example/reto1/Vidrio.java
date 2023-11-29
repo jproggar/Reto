@@ -46,7 +46,6 @@ public class Vidrio extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,12 +68,9 @@ public class Vidrio extends AppCompatActivity {
             }
         });
     }
-
-
     public void registerVidrioM(VidrioM consume){
 
         File vidrioFile= new File(getFilesDir(),"vidrio.txt");
-
         try {
             FileWriter writer= new FileWriter(vidrioFile,true);
             BufferedWriter bufferedWriter= new BufferedWriter(writer);
@@ -91,11 +87,9 @@ public class Vidrio extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
     public void cleanView(){
         quantity.setText("");
         price.setText("");
         month.setSelection(0);
     }
-
 }

@@ -14,12 +14,10 @@ public class Principal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-
         reciclaje=findViewById(R.id.btReciclaje);
         statistics=findViewById(R.id.btEstadisticas);
         recommendations=findViewById(R.id.btConsejos);
 
-        //Recibir los datos enviados en un Intent desde otro Activity
         Intent receive= getIntent();
         String idUser= receive.getStringExtra("idUser");
 
@@ -59,16 +57,12 @@ public class Principal extends AppCompatActivity {
         });
 
     }
-
-
     public void gotologin(View view){
         Intent intent=new Intent(Principal.this,MainActivity.class);
         startActivity(intent);
     }
-
     public void gotoCategorias(View view){
         Intent intent=new Intent(Principal.this,Categorias.class);
         startActivity(intent);
     }
-
 }

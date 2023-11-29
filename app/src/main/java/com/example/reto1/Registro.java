@@ -55,10 +55,7 @@ public class Registro extends AppCompatActivity {
                 }
             }
         });
-
-
     }
-
     public boolean validateUser(){
         boolean validate= true;
 
@@ -87,20 +84,17 @@ public class Registro extends AppCompatActivity {
             password2.setBackgroundColor(Color.RED);
             validate=false;
         }
-
         return validate;
     }
 
     public User createrUser(){
         String id,nameUser,emailUser,phoneUser,password;
-
         nameUser= name.getText().toString();
         id=generateID(nameUser);
         emailUser=email.getText().toString();
         phoneUser=phone.getText().toString();
         password=password1.getText().toString();
         User user= new User(id,nameUser,emailUser,phoneUser,password);
-
         return user;
     }
 
@@ -115,9 +109,7 @@ public class Registro extends AppCompatActivity {
         return id;
     }
     public void saveUser(User user){
-
         File fileUser= new File(getFilesDir(),"user.txt");
-
         try {
             FileWriter writer=new FileWriter(fileUser,true);
             BufferedWriter bufferedWriter= new BufferedWriter(writer);
@@ -133,8 +125,5 @@ public class Registro extends AppCompatActivity {
         }catch (Exception error){
             error.printStackTrace();
         }
-
     }
-
-
 }

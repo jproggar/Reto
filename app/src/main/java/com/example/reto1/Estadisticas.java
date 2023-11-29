@@ -53,121 +53,89 @@ public class Estadisticas extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        File vidrio= new File(getFilesDir(),"vidrio.txt");
+        File papel= new File(getFilesDir(),"papel.txt");
 
+        ArrayList<VidrioM> list_vidrio= listVidrio(vidrio,idUser);
+        ArrayList<PapelM> list_papel= listPapel(papel,idUser);
+        inflateVidrioTable(list_vidrio);
+        inflatePapelTable(list_papel);
+        total_consume_vidrio(list_vidrio);
+        total_consume_papel(list_papel);
+        int total= totalPayVidrio(list_vidrio)+totalPayPapel(list_papel);
+        total_pay.setText("$ "+total);
+    }
+    public void inflateVidrioTable(ArrayList<VidrioM>list_vidrio){
+        System.out.println("inflate");
+        System.out.println(list_vidrio.size());
 
-
-
-
-
-
-
-
-            File vidrio= new File(getFilesDir(),"vidrio.txt");
-            File papel= new File(getFilesDir(),"papel.txt");
-
-            ArrayList<VidrioM> list_vidrio= listVidrio(vidrio,idUser);
-            ArrayList<PapelM> list_papel= listPapel(papel,idUser);
-
-
-                    inflateVidrioTable(list_vidrio);
-
-                    inflatePapelTable(list_papel);
-
-
-
-
-
-
-            total_consume_vidrio(list_vidrio);
-            total_consume_papel(list_papel);
-
-            int total= totalPayVidrio(list_vidrio)+totalPayPapel(list_papel);
-            total_pay.setText("$ "+total);
-
+        int total=0;
+        String averageValue="";
+        System.out.println("Antes");
+        for (VidrioM i: list_vidrio){
+            TableRow row=new TableRow(this);
+            TextView quantity= new TextView(this);
+            quantity.setWidth(97);
+            quantity.setTextSize(14);
+            quantity.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            TextView price= new TextView(this);
+            price.setTextSize(14);
+            price.setWidth(96);
+            price.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            TextView month= new TextView(this);
+            month.setWidth(105);
+            month.setTextSize(14);
+            month.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            TextView average= new TextView(this);
+            average.setWidth(90);
+            average.setTextSize(14);
+            average.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            quantity.setText(i.getQuantity()+"");
+            price.setText(i.getPrice()+"");
+            month.setText(i.getMonth());
+            average.setText((i.getPrice()*i.getQuantity())+"");
+            row.addView(month);
+            row.addView(quantity);
+            row.addView(price);
+            row.addView(average);
+            vidrio.addView(row);
         }
+        System.out.println("Fin");
+    }
 
-
-
-            public void inflateVidrioTable(ArrayList<VidrioM>list_vidrio){
-                System.out.println("inflate");
-                System.out.println(list_vidrio.size());
-
-                int total=0;
-                String averageValue="";
-                System.out.println("Antes");
-                for (VidrioM i: list_vidrio){
-                    TableRow row=new TableRow(this);
-                    TextView quantity= new TextView(this);
-                    quantity.setWidth(97);
-                    quantity.setTextSize(14);
-                    quantity.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    TextView price= new TextView(this);
-                    price.setTextSize(14);
-                    price.setWidth(96);
-                    price.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    TextView month= new TextView(this);
-                    month.setWidth(105);
-                    month.setTextSize(14);
-                    month.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    TextView average= new TextView(this);
-                    average.setWidth(90);
-                    average.setTextSize(14);
-                    average.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    quantity.setText(i.getQuantity()+"");
-                    price.setText(i.getPrice()+"");
-                    month.setText(i.getMonth());
-                    average.setText((i.getPrice()*i.getQuantity())+"");
-
-
-                    row.addView(month);
-                    row.addView(quantity);
-                    row.addView(price);
-                    row.addView(average);
-
-                    vidrio.addView(row);
-                }
-                System.out.println("Fin");
-            }
-
-            public void inflatePapelTable(ArrayList<PapelM>list_papel){
-                int total=0;
-                String averageValue="";
-                System.out.println("Antes");
-                for (PapelM i: list_papel){
-                    TableRow row=new TableRow(this);
-                    TextView quantity= new TextView(this);
-                    quantity.setWidth(97);
-                    quantity.setTextSize(14);
-                    quantity.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    TextView price= new TextView(this);
-                    price.setTextSize(14);
-                    price.setWidth(96);
-                    price.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    TextView month= new TextView(this);
-                    month.setWidth(105);
-                    month.setTextSize(14);
-                    month.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    TextView average= new TextView(this);
-                    average.setWidth(90);
-                    average.setTextSize(14);
-                    average.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    quantity.setText(i.getQuantity()+"");
-                    price.setText(i.getPrice()+"");
-                    month.setText(i.getMonth());
-                    average.setText((i.getPrice()*i.getQuantity())+"");
-
-
-                    row.addView(month);
-                    row.addView(quantity);
-                    row.addView(price);
-                    row.addView(average);
-
-                    papel.addView(row);
-                }
-            }
-
-
-
+    public void inflatePapelTable(ArrayList<PapelM>list_papel){
+        int total=0;
+        String averageValue="";
+        System.out.println("Antes");
+        for (PapelM i: list_papel){
+            TableRow row=new TableRow(this);
+            TextView quantity= new TextView(this);
+            quantity.setWidth(97);
+            quantity.setTextSize(14);
+            quantity.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            TextView price= new TextView(this);
+            price.setTextSize(14);
+            price.setWidth(96);
+            price.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            TextView month= new TextView(this);
+            month.setWidth(105);
+            month.setTextSize(14);
+            month.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            TextView average= new TextView(this);
+            average.setWidth(90);
+            average.setTextSize(14);
+            average.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            quantity.setText(i.getQuantity()+"");
+            price.setText(i.getPrice()+"");
+            month.setText(i.getMonth());
+            average.setText((i.getPrice()*i.getQuantity())+"");
+            row.addView(month);
+            row.addView(quantity);
+            row.addView(price);
+            row.addView(average);
+            papel.addView(row);
+        }
+    }
     public String average(int total, int quantity){
         if (total==0){
             return "Error";
@@ -180,14 +148,6 @@ public class Estadisticas extends AppCompatActivity {
             return df.format(avg);
         }
     }
-
-
-
-
-
-
-
-
     public int totalPayVidrio(ArrayList<VidrioM>list){
         int pay=0;
         for (VidrioM i: list){
@@ -195,7 +155,6 @@ public class Estadisticas extends AppCompatActivity {
         }
         return pay;
     }
-
     public int totalPayPapel(ArrayList<PapelM>list){
         int pay=0;
         for (PapelM i: list){
@@ -203,7 +162,6 @@ public class Estadisticas extends AppCompatActivity {
         }
         return pay;
     }
-
     public void total_consume_vidrio(ArrayList<VidrioM>list){
         int total=0;
         String month="";
@@ -219,7 +177,6 @@ public class Estadisticas extends AppCompatActivity {
         max_vidrio_quantity.setText(max+" Kg");
         max_vidrio_month.setText(month);
     }
-
     public void total_consume_papel(ArrayList<PapelM>list){
         int total=0;
         String month="";
@@ -235,8 +192,6 @@ public class Estadisticas extends AppCompatActivity {
         max_papel_quantity.setText(max+" Kg");
         max_papel_month.setText(month);
     }
-
-
     public ArrayList<VidrioM> listVidrio(File vidrio,String user){
         ArrayList<VidrioM> list= new ArrayList<>();
         try {
@@ -251,7 +206,6 @@ public class Estadisticas extends AppCompatActivity {
                     int price= Integer.parseInt(data[2]);
                     String month= data[3];
                     String idUser= data[4];
-
                     VidrioM obj= new VidrioM(serial,quantity,price,month,idUser);
                     list.add(obj);
                 }
@@ -261,7 +215,6 @@ public class Estadisticas extends AppCompatActivity {
         }
         return list;
     }
-
     public ArrayList<PapelM> listPapel(File papel, String user){
         ArrayList<PapelM> list= new ArrayList<>();
         try {
@@ -276,7 +229,6 @@ public class Estadisticas extends AppCompatActivity {
                     int price= Integer.parseInt(data[2]);
                     String month= data[3];
                     String idUser= data[4];
-
                     PapelM obj= new PapelM(serial,quantity,price,month,idUser);
                     list.add(obj);
                 }
@@ -286,5 +238,4 @@ public class Estadisticas extends AppCompatActivity {
         }
         return list;
     }
-
 }

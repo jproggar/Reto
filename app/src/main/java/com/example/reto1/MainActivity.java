@@ -20,10 +20,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     Button home;
     TextView register;
-
     EditText user,password;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(register_activity);
             }
         });
-
         File fileUser= new File(getFilesDir(),"user.txt");
         ArrayList<User> users= listUser(fileUser);
         home.setOnClickListener(new View.OnClickListener() {
@@ -77,23 +73,17 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 "El usuario no esta registrado",Toast.LENGTH_LONG).show();
                     }
-
                 }
-
             }
         });
     }
-
-
     public ArrayList<User> listUser(File data){
         ArrayList<User> list= new ArrayList<>();
-
         try {
             //Para leer datos de un archivo plano se usa el FileReader
             FileReader reader= new FileReader(data);
             BufferedReader bufferedReader= new BufferedReader(reader);
             String user;
-
             while ((user=bufferedReader.readLine())!=null){
                 String[] userData= user.split(",");
                 String id= userData[0];
@@ -101,16 +91,12 @@ public class MainActivity extends AppCompatActivity {
                 String email=userData[2];
                 String phone= userData[3];
                 String password= userData[4];
-
                 User userObject= new User(id,name,email,phone,password);
                 list.add(userObject);
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-
         return list;
     }
-
-
 }
